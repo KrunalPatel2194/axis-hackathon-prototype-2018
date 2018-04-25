@@ -218,11 +218,11 @@ function enrollProfileAudioForVerification(blob, profileId){
                        function(data, status){
                            if(data)
                            {
-                               window.location = "https://freesoulweb.azurewebsites.net/Account/Profile";
+                               window.location = "http://localhost:65482/Account/Profile";
                            }else{
                                $('.loader--text').text("Enrollment failed | Please try again.");
                                setTimeout(() => {$('#preloader').hide();}, 1000);
-                               setTimeout(() => {window.location = "https://freesoulweb.azurewebsites.net/Account/Profile";}, 1000);
+                               setTimeout(() => {window.location = "http://localhost:65482/Account/Profile";}, 1000);
                            }
                           
                            
@@ -271,7 +271,7 @@ function pollForEnrollment(location, profileId){
                            // alert("Data: " + data + "\nStatus: " + status);
                            $('.loader--text').text("Enrollment successful | redirecting you to login.");
                            setTimeout(() => {$('#preloader').hide();}, 1000);
-                           setTimeout(() => {window.location = "https://freesoulweb.azurewebsites.net/Access/Login";}, 1000);
+                           setTimeout(() => {window.location = "http://localhost:65482/Access/Login";}, 1000);
                            
                        });
                
@@ -328,7 +328,7 @@ function pollForIdentification(location){
                 $('.loader--text').text('still thinking..');
                 //console.log(json);
                 $('.loader--text').text('Credentials mismatch ! not authorized');
-                window.location = "https://freesoulweb.azurewebsites.net/Access/Login";
+                window.location = "http://localhost:65482/Access/Login";
             }
         };
 
