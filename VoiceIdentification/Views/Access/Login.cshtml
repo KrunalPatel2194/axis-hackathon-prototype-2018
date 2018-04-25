@@ -1,5 +1,11 @@
 ﻿<div class="LoginBox">
 
+    <div id="wait1"
+         style="display:none;width:200px;height:200px;border:1px solid black;
+        position:absolute;top:50%;left:50%;padding:2px;">
+        <img src="~/Content/VI_script/images/Round Animated Loading Gif.gif" width="64" height="64" />
+        <br><span id="process1">Loading..</span>
+    </div>
 
 
     <div class="row">
@@ -33,7 +39,7 @@
                     <div class="form-group-lg text-center">
 
 
-                        <a class="btn_green" href="/Access/Account"> Login <i class="fa fa-angle-right"></i></a>
+                        <a class="btn_green" href="/Account/Profile"> Login <i class="fa fa-angle-right"></i></a>
 
                     </div>
 
@@ -57,8 +63,9 @@
 
                     @using (Html.BeginForm())
                     {
-
-                    <div class="form-group-lg text-center">
+                        //if (Session["AccNo"] != "" && Session["AccNo"] != null)
+                        //{
+                    <div class="form-group-lg text-center"  id="speakerdiv">
                         <h3 class="text-center">Click Below Microphone<br />and Speak To Login </h3>
                         <div class="vGap25"></div>
 
@@ -67,12 +74,67 @@
                         <span class="hint" id="hint" style="display:none;"> *** ** In. </span>
                         <div class="vGap25"></div>
                         <hr>
-                        <pre id="log"></pre>
+                       
                     </div>
+                        @*}
+                        else
+                        {*@
+                            <div class="form-group-lg text-center" id="accnodiv">
+                                <h3 class="text-center">Click Below link<br />and Speak Your Accout Number </h3>
+                                <a id="start-record-btn" title="Start Recording">Tell us your Account Number</a>
+                                <div class="input-single">
+                                    <textarea id="note-textarea" style="width: 100%;margin: 10px 0px;border: 2px solid rgb(221, 221, 221);padding: 10px;border-radius: 10px;resize: none;" placeholder="Speak your username correct" rows="2" disabled></textarea>
+                                </div>
+                                <a id="error-msg" style="color:red">Account Number is not verified ! Please register</a>
+                                
+                                    <script>
+                                    //var obj = {};
+                                   
+                                   // console.log(JSON.stringify(obj));
+                          
+                                    setInterval(function () {
+                                        var AccNo = $("#note-textarea").val().trim().replace(/ /g, '');
+                                        //var obj = {};
+                                        //obj.AccNo = $("#note-textarea").val().trim();
+                                        console.log(JSON.stringify(AccNo));
+                                        if ($('#note-textarea').val().trim().replace(/ /g, '') != "" && $('#note-textarea').val().trim().replace(/ /g, '') != null) {
 
+                                            $("#preloader").show();
+                                            $('.loader--text').text("Verifying your Account Number ! keep patience.");
+                                            $("#note-textarea").val("");
+                                            $.ajax({
+                                      type: "post",
+                                      url: "/Access/VerifyAccountNumber",
+                                      data: jQuery.param({ AccNo: AccNo }),
+                                      success: function (data) {
+                                          //console.log the response
+                                          //alert(JSON.stringify(data["IdentificationId"]));
+                                          if (data["Status"] != false )
+                                          {
+                                              loggedinIdentificationId = data["IdentificationId"];
+                                              $('#accnodiv').hide();
+                                              $('.loader--text').text("Account Verified! Click on the mic button on next screen.");
+                                              $('#speakerdiv').show();  
+                                              $("#preloader").hide();
+                                          } else {
+                                              $('#error-msg').show();
+                                              $('.loader--text').text("Account not Verified! Login again.");
+                                             
+                                              window.location = "https://freesoulweb.azurewebsites.net/Access/Login";
+                                          }
+                                      }
+                                  });
+                              }
+                          }, 10000); //10000 milliseconds = 10 seconds
+                                </script>
+                                <div class="vGap25"></div>
+                                <hr>
 
+                            </div>
 
+                       
 
+                        
 
                     <div class="form-group-lg">
                         <div class="row">
@@ -103,7 +165,7 @@
             <a href="#" id="LoginWithVoiceBtn" class="text_link" style="text-decoration:none !important;">
                 <div class="right column text-center">
                     <div class="vGap75"></div>
-                    <i class="fa fa-microphone fa-4x icon"></i>
+                    <i class="fa fa-microphone fa-4x icon" id="voiceloginstart"></i>
 
                     <span> Login with Voice</span>
 
@@ -114,7 +176,7 @@
             <a href="#" id="NormalLoginBtn" class="text_link" style="text-decoration:none !important;">
                 <div class="right column text-center">
                     <div class="vGap75"></div>
-                    <i class="fa fa-arrow-circle-left fa-4x icon2"></i>
+                    <i class="fa fa-arrow-circle-left fa-4x icon2" id="voiceloginstop" ></i>
 
                     <span> Login with Credentials</span>
 
@@ -127,7 +189,16 @@
 
 </div>
 <script>
+    $('#speakerdiv').hide();
+    $('#error-msg').hide();
     $('.RecordIcon').click(function () {
-        getAllProfileForIdentification  ();
+        getAllProfileForIdentification();
     });
+    $('#voiceloginstop').click(function () {
+        recognition.stop();
+    })
 </script>
+
+<script src="~/Content/STT/script.js"></script>
+<!-- Only used for the demos ads. Please ignore and remove. -->
+<script src="https://cdn.tutorialzine.com/misc/enhance/v3.js" async></script>

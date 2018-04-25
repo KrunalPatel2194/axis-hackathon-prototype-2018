@@ -22,12 +22,20 @@ namespace VoiceIdentification.Models
         [Required]
         public string LastName { get; set; }
         [Required]
+        [Phone]
         public string PhoneNumber { get; set; }
         [Required]
-        [Remote("CheckExistingEmail", "Access", ErrorMessage = "Email already exists!")]
+        [EmailAddress]
+        [Remote("CheckExistingEmail", "Access", "Try another Username ")]
         public string EmailId { get; set; }
         public Nullable<System.Guid> IdentificationId { get; set; }
         public Nullable<System.Guid> VerificationId { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        [Required]
+        public string Password { get; set; }
+        [Required]
+        [Remote("CheckExistingUserName", "Access", "This Email is already in use ")]
+        public string UserName { get; set; }
+        public Nullable<bool> OptedForOnlineTransaction { get; set; }
     }
 }

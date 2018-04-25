@@ -1,11 +1,11 @@
-
+﻿
 @charset "utf-8";
 /* CSS Document */
 
 @import url('https://fonts.googleapis.com/css?family=Muli:300,400,500,700,900');
 
-@import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-body { margin:0px;  background:#800a42  url(../images/page_bg_2.jpg) no-repeat; background-size:cover; font-family: 'Muli', sans-serif;  font-weight:400;}
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+body { margin:0px;  backgrzound:#800a42  url(../images/page_bg_2.jpg) no-repeat; background-size:cover; font-family: 'Muli', sans-serif;  font-weight:400;}
 
 .Logo { margin:0 auto; position:fixed; width:600px; background:#FFF; color:#000; text-align:center; padding:10px; border-radius:0 0 6px 6px; left:50%; margin-left:-300px; font-weight:bold; box-shadow:0 0 10px rgba(0,0,0,0.5);	 }
 

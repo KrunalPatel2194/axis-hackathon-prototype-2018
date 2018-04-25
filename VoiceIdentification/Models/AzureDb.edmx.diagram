@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6ff538b812d6454d8481007e2d55de18" Name="Diagram1">
-        <EntityTypeShape EntityType="VoiceIdentificationModel.Activation" Width="1.5" PointX="0.75" PointY="0.75" />
+      <Diagram DiagramId="cd8a650960864b97a6d081906c35bb33" Name="Diagram1">
+        <EntityTypeShape EntityType="hackathonModel.Activation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

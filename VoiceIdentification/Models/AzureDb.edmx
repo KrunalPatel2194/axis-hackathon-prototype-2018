@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="VoiceIdentificationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="hackathonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activations">
           <Key>
             <PropertyRef Name="Id" />
@@ -21,16 +21,14 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="OptedForOnlineTransaction" Type="bit" />
         </EntityType>
-        <EntityContainer Name="VoiceIdentificationModelStoreContainer">
+        <EntityContainer Name="hackathonModelStoreContainer">
           <EntitySet Name="Activations" EntityType="Self.Activations" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="VoiceIdentificationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="VoiceIdentificationEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Activations" EntityType="VoiceIdentificationModel.Activation" />
-        </EntityContainer>
+      <Schema Namespace="hackathonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Activation">
           <Key>
             <PropertyRef Name="Id" />
@@ -47,26 +45,29 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OptedForOnlineTransaction" Type="Boolean" />
         </EntityType>
+        <EntityContainer Name="hackathonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activations" EntityType="Self.Activation" />
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VoiceIdentificationModelStoreContainer" CdmEntityContainer="VoiceIdentificationEntities">
+        <EntityContainerMapping StorageEntityContainer="hackathonModelStoreContainer" CdmEntityContainer="hackathonEntities">
           <EntitySetMapping Name="Activations">
-            <EntityTypeMapping TypeName="VoiceIdentificationModel.Activation">
+            <EntityTypeMapping TypeName="hackathonModel.Activation">
               <MappingFragment StoreEntitySet="Activations">
-                <ScalarProperty Name="OptedForOnlineTransaction" ColumnName="OptedForOnlineTransaction" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="VerificationId" ColumnName="VerificationId" />
-                <ScalarProperty Name="IdentificationId" ColumnName="IdentificationId" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="IdentificationId" ColumnName="IdentificationId" />
+                <ScalarProperty Name="VerificationId" ColumnName="VerificationId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="OptedForOnlineTransaction" ColumnName="OptedForOnlineTransaction" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

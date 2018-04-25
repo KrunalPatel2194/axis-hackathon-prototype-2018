@@ -11,12 +11,26 @@
     @*<link href="css/custom.css" rel="stylesheet">*@
     <link href="~/Content/VI_script/css/custom.css" rel="stylesheet" />
     <script src="~/Content/VI_script/Scripts/recorder.js"></script>
-    <script src="~/Content/VI_script/Scripts/speaker-recognition-api-demo-core.js"></script>
+    <script src="~/Content/VI_script/Scripts/freesoul.js"></script>
     <script src="~/Content/VI_script/Scripts/jquery-loader.js"></script>
     
 </head>
 
 <body>
+    <div class="modalBackground"></div>
+    <div id="preloader">
+        <div class='loader'>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--dot'></div>
+            <div class='loader--text'>Creating Profile</div>
+        </div>
+
+
+    </div>
     <div class="Logo">Free Soul's Voice Enabled Access Prototype</div>
     @RenderBody()
    
@@ -85,12 +99,12 @@ function onMediaSuccess(stream, callback, secondsOfAudio) {
     var input = audio_context.createMediaStreamSource(stream);
     recorder = new Recorder(input);
     recorder.record();
-    console.log("in");
+  //  $('.loader--text').text('Media recorded! stop speaking');
 	setTimeout(() => { StopListening(callback); }, secondsOfAudio*1000);
 }
 
 function StopListening(callback){
-	console.log('...working...');
+    //$('.loader--text').text('Media recorded! stop speaking');
     recorder && recorder.stop();
     recorder.exportWAV(function(blob) {
         callback(blob);
@@ -98,6 +112,20 @@ function StopListening(callback){
     recorder.clear();
 }
 
+//$(document).ready(function () {
+//    $(document).ajaxStart(function () {
+//        $('.loader--text').text('Processing...');
+//    });
+//    $(document).ajaxComplete(function () {
+//        $('.loader--text').text('Processing...');
+//    });
+
+//});
+function Showloader() {
+    setTimeout(function () {
+        $('#preloader').fadeOut('fast');
+    }, 10000);
+}
     </script>
 
 

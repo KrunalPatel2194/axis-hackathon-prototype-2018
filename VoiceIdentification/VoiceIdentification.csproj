@@ -173,23 +173,24 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Activation.cs">
-      <DependentUpon>VoiceIdentificationEDMX.tt</DependentUpon>
+      <DependentUpon>AzureDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VoiceIdentificationEDMX.Context.cs">
+    <Compile Include="Models\AzureDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VoiceIdentificationEDMX.Context.tt</DependentUpon>
+      <DependentUpon>AzureDb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VoiceIdentificationEDMX.cs">
+    <Compile Include="Models\AzureDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VoiceIdentificationEDMX.tt</DependentUpon>
+      <DependentUpon>AzureDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VoiceIdentificationEDMX.Designer.cs">
+    <Compile Include="Models\AzureDb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VoiceIdentificationEDMX.edmx</DependentUpon>
+      <DependentUpon>AzureDb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +200,8 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\STT\script.js" />
+    <Content Include="Content\STT\styles.css" />
     <Content Include="Content\VI_script\css\bootstrap.min.css" />
     <Content Include="Content\VI_script\css\clouds.css" />
     <Content Include="Content\VI_script\css\custom.css" />
@@ -213,21 +216,21 @@
     <Content Include="Content\VI_script\images\Round Animated Loading Gif.gif" />
     <Content Include="Content\VI_script\Scripts\jquery-loader.js" />
     <Content Include="Content\VI_script\Scripts\recorder.js" />
-    <Content Include="Content\VI_script\Scripts\speaker-recognition-api-demo-core.js" />
+    <Content Include="Content\VI_script\Scripts\freesoul.js" />
     <Content Include="Content\VI_script\widgets\hotkeys\jquery.hotkey.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\VoiceIdentificationEDMX.Context.tt">
+    <Content Include="Models\AzureDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>VoiceIdentificationEDMX.Context.cs</LastGenOutput>
-      <DependentUpon>VoiceIdentificationEDMX.edmx</DependentUpon>
+      <DependentUpon>AzureDb.edmx</DependentUpon>
+      <LastGenOutput>AzureDb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\VoiceIdentificationEDMX.tt">
+    <Content Include="Models\AzureDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>VoiceIdentificationEDMX.edmx</DependentUpon>
-      <LastGenOutput>VoiceIdentificationEDMX.cs</LastGenOutput>
+      <DependentUpon>AzureDb.edmx</DependentUpon>
+      <LastGenOutput>AzureDb.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -239,16 +242,19 @@
     <Content Include="Content\VI_script\css\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\VI_script\css\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\VI_script\css\fonts\fontawesome-webfont.woff2" />
-    <EntityDeploy Include="Models\VoiceIdentificationEDMX.edmx">
+    <EntityDeploy Include="Models\AzureDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>VoiceIdentificationEDMX.Designer.cs</LastGenOutput>
+      <LastGenOutput>AzureDb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\VoiceIdentificationEDMX.edmx.diagram">
-      <DependentUpon>VoiceIdentificationEDMX.edmx</DependentUpon>
+    <Content Include="Models\AzureDb.edmx.diagram">
+      <DependentUpon>AzureDb.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\axis-hackathon - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\axis-hackathon-api - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\axis-hackathon-api - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Freesouls-Devhack - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\freesoulweb - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\freesoulweb - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -282,6 +288,7 @@
     <Content Include="Views\Access\Login.cshtml" />
     <Content Include="Views\Access\Register.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\SpeechToText.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\VI_script\Scripts\javascriptanchor-js\" />
