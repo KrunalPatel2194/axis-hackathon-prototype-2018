@@ -307,7 +307,7 @@ function pollForIdentification(location){
         {
             $('.loader--text').text('getting status');
             $('.loader--text').text(request.responseText);
-           // alert(JSON.stringify(request.identifiedProfileId));
+            //alert(JSON.stringify(request.identifiedProfileId) +"in Ide pol");
             var json = JSON.parse(request.responseText);
            //alert(json.processingResult.identifiedProfileId);
 
@@ -320,7 +320,7 @@ function pollForIdentification(location){
                     $('.loader--text').text('I think ' + speaker[0].name + ' was talking');
                 } else {
                     $('.loader--text').text('Logging you in...');
-                    window.location = "z/Account/Profile";
+                    window.location = "/Account/Profile";
                 }
             }
             else 
@@ -468,7 +468,8 @@ function BurnItAll(mode = 'identification'){
                alert("error");
            });
     }
-    var key='da24ac3f4a0341c895f6b19ec5c7758c';
+    //var key='da24ac3f4a0341c895f6b19ec5c7758c';
+    var key='633f399c60df4ee09c45928cd360dcdf';
     var Profile = class { constructor (name, profileId) { this.name = name; this.profileId = profileId;}};
     var VerificationProfile = class { constructor (name, profileId) { this.name = name; this.profileId = profileId; this.remainingEnrollments = 3}};
     var profileIds = [];

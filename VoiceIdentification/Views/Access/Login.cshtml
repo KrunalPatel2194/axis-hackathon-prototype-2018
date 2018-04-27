@@ -108,13 +108,14 @@
                                       data: jQuery.param({ AccNo: AccNo }),
                                       success: function (data) {
                                           //console.log the response
-                                          //alert(JSON.stringify(data["IdentificationId"]));
+                                          //alert(JSON.stringify(data["IdentificationId"]) + "ver Account" );
                                           if (data["Status"] != false )
                                           {
                                               loggedinIdentificationId = data["IdentificationId"];
                                               $('#accnodiv').hide();
                                               $('.loader--text').text("Account Verified! Click on the mic button on next screen.");
-                                              $('#speakerdiv').show();  
+                                              recognition.stop();
+                                              $('#speakerdiv').show();
                                               $("#preloader").hide();
                                           } else {
                                               $('#error-msg').show();

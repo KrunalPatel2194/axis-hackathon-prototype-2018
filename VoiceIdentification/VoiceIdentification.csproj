@@ -201,7 +201,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\STT\script.js" />
-    <Content Include="Content\STT\styles.css" />
+    <Content Include="Content\VI_script\styles.css" />
     <Content Include="Content\VI_script\css\bootstrap.min.css" />
     <Content Include="Content\VI_script\css\clouds.css" />
     <Content Include="Content\VI_script\css\custom.css" />
@@ -252,6 +252,8 @@
     <None Include="Properties\PublishProfiles\axis-hackathon - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\axis-hackathon-api - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\axis-hackathon-api - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Freesouls-Devhack - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Freesouls-Devhack - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\Freesouls-Devhack - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\freesoulweb - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\freesoulweb - Web Deploy.pubxml" />
