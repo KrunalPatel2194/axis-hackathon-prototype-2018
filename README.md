@@ -14,4 +14,10 @@ Devlopment Environment:
 Entity Framework : 6.0.0.0
 Reliable Internet connectivity
 
-Happy coding :)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+It uses default http://localhost:65482/
+if not and you get any error regarding file or page not found 
+replace the above url with your current IIS Port.
+in - Login.cshtml and Freesoul.js file
